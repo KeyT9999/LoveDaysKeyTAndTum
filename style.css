@@ -15,38 +15,71 @@ body {
       text-shadow: 0.4px 0.4px 0.4px rgba(0,0,0,.2);
 }
 
+/* ... (your existing styles) ... */
+
 #info {
       margin-top: 2rem; /* Adjust for spacing above avatars */
       display: flex;   /* Use flexbox for easy alignment */
       justify-content: space-around; /* Evenly space the avatars */
-}
+  }
   
-.one, .profile { /* Style both avatar containers similarly */
+  .one, .two { /* Style both avatar containers similarly */
       text-align: center;
-}
-
-.avatar, .avt {
-      width: 120px;
-      height: 120px;
+  }
+  
+  .avatar {
+      width: 120px;   /* Increase avatar size */
+      height: 120px;  /* Increase avatar size */
       border-radius: 50%;
       object-fit: cover;
       box-shadow: 2px 2px 8px rgba(0,0,0,.2);
-}
+  }
+  #info .profile { /* Thay đổi phần này */
+      grid-column: 9 / 10; /* Thay đổi giá trị grid-column */
+      text-align: center;
+    }
+    
+  
 
-#heart {
+  #heart {
       grid-column: span 3; /* Span all 3 columns */
       display: flex; /* Use flexbox for alignment */
       flex-direction: column; /* Align items vertically */
       justify-content: center; /* Center vertically */
       align-items: center; /* Center horizontally */
-}
-
-@media (max-width: 992px) {
-      .avatar, .avt {
-            width: 100px;
-            height: 100px;
+      /* ...rest of your styles */
+  }
+  
+  
+  /* ... (rest of your existing styles) ... */
+  
+  @media (max-width: 992px) {
+      /* ... (your existing media query styles) ... */
+      .avatar {
+          width: 100px;  /* Adjust for smaller screens */
+          height: 100px; /* Adjust for smaller screens */
       }
-}
+  }
+
+  
+.avatar {
+      width: 80px; 
+      height: 80px;
+      border-radius: 50%; /* Tạo ảnh tròn */
+      object-fit: cover; 
+  }
+  .avt {
+      width: 80px; 
+      height: 80px;
+      border-radius: 50%; /* Tạo ảnh tròn */
+      object-fit: cover; 
+  }
+
+  
+  
+ 
+
+  
 
 h1 {
       font-weight: lighter;
@@ -80,6 +113,72 @@ h1 {
       border-radius: 10rem;
 }
 
+date, time {
+      display: block;
+}
+
+date {
+      font-size: 18px;
+}
+
+time {
+      font-family: "Arial", sans-serif;
+      line-height: 3.2rem;
+      letter-spacing: 2px;
+}
+
+.avt {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      box-shadow: 2px 2px 8px rgba(0,0,0,.2);
+}
+
+#info {
+      margin-top: 2.6rem;
+}
+
+#heart {
+      grid-column: span 2;
+      display: grid;
+      grid-template-rows: 2;
+      font-size: 44px;
+      color: #b90d46;
+      align-self: center;
+      padding-bottom: 2.6rem;
+      text-align: center;
+}
+
+anni {
+      font-size: 16px;
+      letter-spacing: 0.2px;
+}
+
+#info .one {
+      grid-column: 3 / 6;
+      text-align: center;
+}
+
+#info .two {
+      grid-column: 8 / 11;
+      text-align: center;
+}
+
+footer {
+      grid-column: span 3;
+      text-align: center;
+      font-size: 1.6rem;
+      font-weight: lighter;
+      margin-top: 1.2rem;
+}
+
+#music {
+      grid-column: 2;
+      position: relative;
+      z-index: 1000;
+      opacity: .4;
+}
+
 #mask {
       background-image: linear-gradient(to top, #6d44cc5d 0%, #f09cd880 100%);
       opacity: .42;
@@ -104,8 +203,8 @@ h1 {
             height: 120px;
       }
 
-      #info .one, #info .profile {
-            grid-column: span 12;
+      #info .one, #info .two{
+            grid-column: span 12;;
       }
 
       #heart {
