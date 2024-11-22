@@ -1,220 +1,206 @@
+/* Reset styles */
 html, body {
-      background-color: #f6f6f6;
       margin: 0;
       padding: 0;
-}
-
-img {max-width: 100%;}
-
-body {
-      display: grid;
-      font-family: "Segoe UI", sans-serif;
-      grid-template-columns: repeat(12, 1fr);
-      grid-auto-rows: minmax(auto, auto);
-      color: #3e3e3e;
-      text-shadow: 0.4px 0.4px 0.4px rgba(0,0,0,.2);
-}
-
-/* ... (your existing styles) ... */
-
-#info {
-      margin-top: 2rem; /* Adjust for spacing above avatars */
-      display: flex;   /* Use flexbox for easy alignment */
-      justify-content: space-around; /* Evenly space the avatars */
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color: #fff;
+      overflow: hidden;
   }
   
-  .one, .two { /* Style both avatar containers similarly */
+  /* Màn hình nhập mật khẩu */
+  #password-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      position: relative;
+  }
+  
+  #password-screen h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #fff;
+  }
+  
+  #password-screen p {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+  }
+  
+  #password-input {
+      padding: 0.8rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      width: 80%;
+      max-width: 300px;
+      margin-bottom: 1rem;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  #submit-btn {
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      background-color: #ec407a;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  }
+  
+  #submit-btn:hover {
+      background-color: #d81b60;
+  }
+  
+  #error-message {
+      color: #ff4d4d;
+      font-size: 1rem;
+      margin-top: 1rem;
+      font-weight: bold;
+  }
+  
+  /* Hiệu ứng bông hoa */
+  .flower {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: float 5s infinite ease-in-out;
+  }
+  
+  @keyframes float {
+      0% {
+          transform: translate(0, 0) rotate(0deg);
+      }
+      50% {
+          transform: translate(50px, -50px) rotate(180deg);
+      }
+      100% {
+          transform: translate(0, 0) rotate(360deg);
+      }
+  }
+  
+  /* Giao diện chính */
+  #main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+  }
+  
+  h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 1rem 0;
+      color: #fff;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Countdown display */
+  #countdown {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #fff;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+      margin-top: 1rem;
+  }
+  
+  /* Clock display */
+  #clock {
+      margin-top: 1rem;
+      font-size: 2.5rem;
+      font-weight: 500;
+      color: #fff;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Profile */
+  #profile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+  }
+  
+  .avatar-container {
       text-align: center;
   }
   
   .avatar {
-      width: 120px;   /* Increase avatar size */
-      height: 120px;  /* Increase avatar size */
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       object-fit: cover;
-      box-shadow: 2px 2px 8px rgba(0,0,0,.2);
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  #info .profile { /* Thay đổi phần này */
-      grid-column: 9 / 10; /* Thay đổi giá trị grid-column */
-      text-align: center;
-    }
-    
   
-
+  .avatar:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  }
+  
   #heart {
-      grid-column: span 3; /* Span all 3 columns */
-      display: flex; /* Use flexbox for alignment */
-      flex-direction: column; /* Align items vertically */
-      justify-content: center; /* Center vertically */
-      align-items: center; /* Center horizontally */
-      /* ...rest of your styles */
+      font-size: 3rem;
+      color: #b90d46;
   }
   
+  /* Music player */
+  #music-player {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+  }
   
-  /* ... (rest of your existing styles) ... */
+  audio {
+      width: 80%;
+      max-width: 400px;
+      border: 2px solid #fff;
+      border-radius: 10px;
+      box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+  }
   
-  @media (max-width: 992px) {
-      /* ... (your existing media query styles) ... */
-      .avatar {
-          width: 100px;  /* Adjust for smaller screens */
-          height: 100px; /* Adjust for smaller screens */
+  /* Footer */
+  footer {
+      position: absolute;
+      bottom: 5px;
+      width: 100%;
+      text-align: center;
+      font-size: 1rem;
+      color: #fff;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+      from {
+          opacity: 0;
+          transform: translateY(20px);
+      }
+      to {
+          opacity: 1;
+          transform: translateY(0);
       }
   }
-
   
-.avatar {
-      width: 80px; 
-      height: 80px;
-      border-radius: 50%; /* Tạo ảnh tròn */
-      object-fit: cover; 
-  }
-  .avt {
-      width: 80px; 
-      height: 80px;
-      border-radius: 50%; /* Tạo ảnh tròn */
-      object-fit: cover; 
-  }
-
-  
-  
- 
-
-  
-
-h1 {
-      font-weight: lighter;
-      grid-column: span 3;
-      text-align: center;
-      color: #ec407a;
-}
-
-#wrapper {
-      display: grid;
-      grid-column: 3 / 11;
-      grid-template-columns: repeat(3, 1fr);
-      grid-auto-rows: minmax(auto, auto);
-      grid-row-gap: 10px;
-      margin-top: 3.6rem;
-}
-
-#clock-box, #info {
-      grid-column: span 3;
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-}
-
-#clock-box #clock {
-      grid-column: 4 / 10;
-      background-color: #F8C8C8;
-      padding: .6rem 2rem;
-      padding-top: .8rem;
-      text-align: center;
-      font-size: 2.4rem;
-      border-radius: 10rem;
-}
-
-date, time {
-      display: block;
-}
-
-date {
-      font-size: 18px;
-}
-
-time {
-      font-family: "Arial", sans-serif;
-      line-height: 3.2rem;
-      letter-spacing: 2px;
-}
-
-.avt {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      box-shadow: 2px 2px 8px rgba(0,0,0,.2);
-}
-
-#info {
-      margin-top: 2.6rem;
-}
-
-#heart {
-      grid-column: span 2;
-      display: grid;
-      grid-template-rows: 2;
-      font-size: 44px;
-      color: #b90d46;
-      align-self: center;
-      padding-bottom: 2.6rem;
-      text-align: center;
-}
-
-anni {
-      font-size: 16px;
-      letter-spacing: 0.2px;
-}
-
-#info .one {
-      grid-column: 3 / 6;
-      text-align: center;
-}
-
-#info .two {
-      grid-column: 8 / 11;
-      text-align: center;
-}
-
-footer {
-      grid-column: span 3;
-      text-align: center;
-      font-size: 1.6rem;
-      font-weight: lighter;
-      margin-top: 1.2rem;
-}
-
-#music {
-      grid-column: 2;
-      position: relative;
-      z-index: 1000;
-      opacity: .4;
-}
-
-#mask {
-      background-image: linear-gradient(to top, #6d44cc5d 0%, #f09cd880 100%);
-      opacity: .42;
-      width: 100vw;
-      height: 100vh;
-      position: fixed;
+  .flower {
+      width: 50px;
+      height: 50px;
+      position: absolute;
       top: 0;
       left: 0;
-}
-
-@media (max-width: 992px) {
-      #wrapper {
-            grid-column: span 12;
-      }
-
-      #clock-box #clock {
-            grid-column: 2 / 12;
-      }
-
-      .avt {
-            width: 120px;
-            height: 120px;
-      }
-
-      #info .one, #info .two{
-            grid-column: span 12;;
-      }
-
-      #heart {
-            grid-column: span 12;
-            padding-bottom: 1rem;
-      }
-
-      footer {
-            font-size: 1.2rem;
-            margin: 0;
-            padding-bottom: 2rem;
-      }
-}
+      animation: float 10s infinite ease-in-out;
+      pointer-events: none;
+      opacity: 0.8;
+  }
+  
+  
