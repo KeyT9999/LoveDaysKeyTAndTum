@@ -1,26 +1,90 @@
-const yourDate = new Date("2024-04-01T00:00:00"),
-music = ['ido', 'noinaycoanh', 'nguoiamphu', 'forya', 'iuladay', 'nhattrendoi', 'tinhka', 'yeuem', 'tam', 'dunglam', 'lovestory', 'lover'];
+// Mật khẩu của trái tim
+const correctPassword = "01042024";
 
-document.addEventListener('DOMContentLoaded', function(){
-      var rootTime = document.querySelector("time");
+// Set start date
+const startDate = new Date("2024-04-01T00:00:00");
+const countdownElement = document.querySelector(".days");
+const clockElement = document.querySelector(".time");
 
-      document.querySelector("anni").textContent = `${(yourDate.getDate()>9)?yourDate.getDate():"0"+yourDate.getDate()}-${(yourDate.getMonth()>8)?(yourDate.getMonth()+1):"0"+(yourDate.getMonth()+1)}-${yourDate.getFullYear()}`;
-      
-      document.querySelector("date").textContent = Math.floor( Math.floor((new Date() - yourDate) / 1000) / 60 / 60 / 24)+" DAYS";
+// Hiển thị giao diện chính khi mật khẩu đúng
+function unlockContent() {
+    document.getElementById("password-screen").style.display = "none";
+    document.getElementById("main-content").style.display = "flex";
+    document.getElementById("music-player").style.display = "block";
+    createFlowers("main-content"); // Thêm hoa vào giao diện chính
+    updateDisplay();
+    setInterval(updateDisplay, 1000);
 
-      function olock() {
-            var today = new Date(),
-            hrs = (Math.floor( Math.floor((today - yourDate) / 1000) / 60 / 60)) % 24,
-            min = (Math.floor( Math.floor((today - yourDate) / 1000) / 60)) % 60,
-            sec =  Math.floor((today - yourDate) / 1000) % 60;
-            rootTime.textContent = `${(hrs>9)?hrs:"0"+hrs}:${(min>9)?min:"0"+min}:${(sec>9)?sec:"0"+sec}`;
-      } olock();
-      var timer = setInterval(function(){olock()}, 1000);
-      document.querySelector("audio").setAttribute("src", `music/${music[Math.floor(Math.random()*music.length)]}.mp3`);
+    // Set random music
+    const musicList = [
+        'ido.mp3', 
+        'noinaycoanh.mp3', 
+        'nguoiamphu.mp3', 
+        'forya.mp3', 
+        'iuladay.mp3', 
+        'nhattrendoi.mp3', 
+        'tinhka.mp3', 
+        'yeuem.mp3', 
+        'tam.mp3', 
+        'dunglam.mp3', 
+        'lovestory.mp3', 
+        'lover.mp3'
+    ];
+    const audio = document.querySelector('audio');
+    const randomSong = musicList[Math.floor(Math.random() * musicList.length)];
+    audio.src = randomSong;
+}
 
-      document.getElementsByTagName("body")[0].insertAdjacentHTML(
-            "beforeend",
-            "<div id='mask'></div>"
-      );
+// Cập nhật số ngày và giờ
+function updateDisplay() {
+    const now = new Date();
+    const diffTime = now - startDate;
 
-}, false);
+    // Tính số ngày
+    const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    countdownElement.textContent = `Chúng mình đã bên nhau được ${days} ngày`;
+
+    // Tính giờ, phút, giây
+    const hours = Math.floor((diffTime / (1000 * 60 * 60)) % 24).toString().padStart(2, '0');
+    const minutes = Math.floor((diffTime / (1000 * 60)) % 60).toString().padStart(2, '0');
+    const seconds = Math.floor((diffTime / 1000) % 60).toString().padStart(2, '0');
+    clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+}
+
+// Hiệu ứng bông hoa
+// Hiệu ứng bông hoa
+// Hiệu ứng bông hoa với hình ảnh đã xóa nền
+function createFlowers(targetId) {
+      const target = document.getElementById(targetId);
+      for (let i = 0; i < 10; i++) {
+          const flower = document.createElement("img");
+          flower.src = "xoanenhoa.png"; // Đường dẫn tới hình ảnh bông hoa PNG
+          flower.classList.add("flower");
+          flower.style.top = `${Math.random() * 100}%`;
+          flower.style.left = `${Math.random() * 100}%`;
+          flower.style.animationDelay = `${Math.random() * 5}s`;
+          target.appendChild(flower);
+      }
+  }
+  
+  
+
+// Xử lý sự kiện nhập mật khẩu
+document.getElementById("submit-btn").addEventListener("click", () => {
+    const passwordInput = document.getElementById("password-input").value.toLowerCase();
+    const errorMessage = document.getElementById("error-message");
+
+    if (passwordInput === correctPassword) {
+        createFlowers("main-content"); // Thêm hoa vào giao diện chính
+        unlockContent();
+    } else {
+        errorMessage.textContent = "Bạn ey, nhập lại đii 😅";
+    }
+});
+
+// Khởi chạy bông hoa cho giao diện nhập mật khẩu
+document.addEventListener("DOMContentLoaded", () => {
+    createFlowers("password-screen");
+});
+
+
