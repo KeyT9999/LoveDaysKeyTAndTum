@@ -1,49 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <link rel="stylesheet" href="style.css">
-      <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
-      <link rel="stylesheet" href="/app.js">
-      <title>GĐ nhà Ngố</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <title>KeyT & Tâm Lê</title>
 </head>
 <body>
-     <div id="wrapper">
-           <h1>LOVE DAYS</h1>
+    <!-- Màn hình nhập mật khẩu -->
+    <div id="password-screen">
+        <h1>Lời yêu thương gửi tới bạn 💖</h1>
+        <p>Mật khẩu của trái tim:</p>
+        <input type="password" id="password-input" placeholder="Ghi liền, không dấu">
+        <button id="submit-btn">Đồng ý</button>
+        <p id="error-message"></p>
+    </div>
 
-           <div id="clock-box">
-                 <div id="clock">
-                       <date>0 DAYS</date>
-                       <time>00:00:00</time>
-                  </div>
+    <!-- Nội dung chính -->
+    <div id="main-content" style="display: none;">
+        <div id="profile">
+            <div class="avatar-container">
+                <img src="/Thang.JPEG" class="avatar" alt="KeyT">
+                <p>KeyT</p>
             </div>
-            
-            <div id="info">
-                  <div class="one">
-                        <img src="/Thang.JPEG" class="avatar">
-                        <p>KeyT</p>
-                  </div>
-                  <div id="heart">
-                        ❤<anni>...</anni>
-                  </div>
-                  <div class="profile">
-                        <img src="/EmTum.JPEG" alt="Ảnh đại diện của Tâm Lê" class="avatar">
-                        <div class="info">
-                            <p>Tâm Lê</p>
-                            
-                        </div>
-                    </div>
-                    
+            <div id="heart">
+                ❤
             </div>
-            
-            <div id="music">
-                  <audio loop autoplay controls>Your browser does not support the audio element.</audio>
+            <div class="avatar-container">
+                <img src="/EmTum.JPEG" class="avatar" alt="Tâm Lê">
+                <p>Tâm Lê</p>
             </div>
-            <footer>Anh yêu Em Tum nhìuu 💕</footer>
-      </div> 
-      
-      <script src="app.js"></script>
+        </div>
+
+        <h1>Days Together</h1>
+        <div id="countdown">
+            <span class="days">Chúng mình đã bên nhau được 0 ngày</span>
+        </div>
+        <div id="clock">
+            <span class="time">00:00:00</span>
+        </div>
+    </div>
+
+    <div id="music-player" style="display: none;">
+        <audio controls autoplay loop>Your browser does not support the audio element.</audio>
+    </div>
+
+    <footer>
+        Anh yêu Em Tum nhìuu 💕
+    </footer>
+
+    <script src="app.js"></script>
 </body>
 </html>
